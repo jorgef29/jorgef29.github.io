@@ -19,9 +19,9 @@ boton.addEventListener('click', () => {
         diario = calculoHollidaySegar(peso)
         flujo = Math.round(flujoHorario(peso))
         mantenimientoValor = Math.round(mantenimiento(peso))
-        dia.innerText = diario + " cc"
-        flu.innerText = flujo + " cc/hr"
-        man.innerText = mantenimientoValor + " cc/hr"
+        dia.innerText = "volumen diario: " + diario + " cc"
+        flu.innerText = "Flujo horario: " + flujo + " cc/hr"
+        man.innerText = "Mantenimiento: " + mantenimientoValor + " cc/hr"
 
         componentesHasta30()
     } else {
