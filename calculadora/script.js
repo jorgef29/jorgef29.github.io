@@ -7,10 +7,20 @@ let sc2 = document.getElementById('sc2')
 let error = document.getElementById('error')
 let pesoInput = document.getElementById('peso')
 
-boton.addEventListener('click', () => {
+boton.addEventListener('click', calcular);
+
+// Agregar evento al input para el Enter
+pesoInput.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+        // Verificar si la tecla presionada es "Enter" (código 13)
+        calcular();
+    }
+});
+
+function calcular() {
     let peso = pesoInput.valueAsNumber
     let diario, flujo, mantenimientoValor, valor, valor1, valor2
-    //validacion de datos
+    // Validación de datos
     if (pesoInput <= 0 || isNaN(peso)) {
         error.style.display = 'block';
         return;
@@ -19,7 +29,7 @@ boton.addEventListener('click', () => {
         diario = calculoHollidaySegar(peso)
         flujo = Math.round(flujoHorario(peso))
         mantenimientoValor = Math.round(mantenimiento(peso))
-        dia.innerText = "volumen diario: " + diario + " cc"
+        dia.innerText = "Volumen diario: " + diario + " cc"
         flu.innerText = "Flujo horario: " + flujo + " cc/hr"
         man.innerText = "Mantenimiento: " + mantenimientoValor + " cc/hr"
 
@@ -33,8 +43,7 @@ boton.addEventListener('click', () => {
 
         componentesMayorA30()
     }
-
-})
+}
 
 
 function calculoHollidaySegar(peso) {
@@ -64,12 +73,13 @@ function componentesHasta30() {
     man.style.display = 'block';
     sc1.style.display = 'none'
     sc2.style.display = 'none'
+    error.style.display = 'none'
 }
 function componentesMayorA30() {
     dia.style.display = 'none';
     flu.style.display = 'none';
     man.style.display = 'none';
-
+    error.style.display = 'none'
     sc1.style.display = 'block'
     sc2.style.display = 'block'
 }
